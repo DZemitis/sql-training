@@ -4,21 +4,47 @@ import {
   MOVIE_KEYWORDS,
   MOVIE_ACTORS,
   MOVIE_DIRECTORS,
-  MOVIE_PRODUCTION_COMPANIES
+  MOVIE_PRODUCTION_COMPANIES,
+  ALL_TABLES
 } from "../src/table-names";
 import { Database } from "../src/database";
 import { tableInfo } from "../src/queries/table-info";
 import { minutes, Log } from "./utils";
 
-const CREATE_MOVIE_GENRES_TABLE = ``;
+const CREATE_MOVIE_GENRES_TABLE = `
+CREATE TABLE ${MOVIE_GENRES} (
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  genre_id integer NOT NULL REFERENCES genres(id) ON DELETE RESTRICT,
+  Primary key (movie_id, genre_id)
+)`;
 
-const CREATE_MOVIE_ACTORS_TABLE = ``;
+const CREATE_MOVIE_ACTORS_TABLE = `
+CREATE TABLE ${MOVIE_ACTORS} (
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  actor_id integer NOT NULL REFERENCES actors(id) ON DELETE RESTRICT,
+  Primary key (movie_id, actor_id)
+  )`;
 
-const CREATE_MOVIE_DIRECTORS_TABLE = ``;
+const CREATE_MOVIE_DIRECTORS_TABLE = `
+CREATE TABLE ${MOVIE_DIRECTORS} (
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  director_id integer NOT NULL REFERENCES directors(id) ON DELETE RESTRICT,
+  Primary key (movie_id, director_id)
+  )`;
 
-const CREATE_MOVIE_KEYWORDS_TABLE = ``;
+const CREATE_MOVIE_KEYWORDS_TABLE = `
+CREATE TABLE ${MOVIE_KEYWORDS} (
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  keyword_id integer NOT NULL REFERENCES keywords(id) ON DELETE RESTRICT,
+  Primary key (movie_id, keyword_id)
+  )`;
 
-const CREATE_MOVIE_PRODUCTION_COMPANIES_TABLE = ``;
+const CREATE_MOVIE_PRODUCTION_COMPANIES_TABLE = `
+CREATE TABLE ${MOVIE_PRODUCTION_COMPANIES} (
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  company_id integer NOT NULL REFERENCES production_companies(id) ON DELETE RESTRICT,
+  Primary key (movie_id, company_id)
+  )`;
 
 describe("Insert Combined Data", () => {
   let db: Database;

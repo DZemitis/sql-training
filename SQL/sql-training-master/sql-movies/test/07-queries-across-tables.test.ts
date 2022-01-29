@@ -12,8 +12,7 @@ describe("Queries Across Tables", () => {
   it(
     "should select top three directors ordered by total budget spent in their movies",
     async done => {
-      const query =
-        `SELECT full_name as director, ROUND (SUM(budget_adjusted),2) as total_budget
+      const query = `SELECT full_name as director, ROUND (SUM(budget_adjusted),2) as total_budget
       from ${DIRECTORS}
       INNER JOIN ${MOVIE_DIRECTORS}
       ON directors.id = movie_directors.director_id
@@ -47,8 +46,7 @@ describe("Queries Across Tables", () => {
   it(
     "should select top 10 keywords ordered by their appearance in movies",
     async done => {
-      const query =
-        `SELECT keyword, COUNT(*) as count
+      const query = `SELECT keyword, COUNT(*) as count
       FROM ${KEYWORDS}
       INNER JOIN ${MOVIE_KEYWORDS} mk on keywords.id = mk.keyword_id
       INNER JOIN ${MOVIES} m on m.id = mk.movie_id
@@ -108,8 +106,7 @@ describe("Queries Across Tables", () => {
   it(
     "should select all movies called Life and return amount of actors",
     async done => {
-      const query =
-        `SELECT original_title, count (*) as count
+      const query = `SELECT original_title, count (*) as count
       from ${MOVIES}
       inner join movie_actors ma on movies.id = ma.movie_id
       inner join actors a on a.id = ma.actor_id
@@ -129,8 +126,7 @@ describe("Queries Across Tables", () => {
   it(
     "should select three genres which has most ratings with 5 stars",
     async done => {
-      const query =
-        `SELECT genre, COUNT(*) as five_stars_count
+      const query = `SELECT genre, COUNT(*) as five_stars_count
       from genres
       inner join movie_genres mg on genres.id = mg.genre_id
       inner join movie_ratings mr on mg.movie_id = mr.movie_id
@@ -163,8 +159,7 @@ describe("Queries Across Tables", () => {
   it(
     "should select top three genres ordered by average rating",
     async done => {
-      const query =
-        `SELECT genre, ROUND (AVG(rating),2) as avg_rating
+      const query = `SELECT genre, ROUND (AVG(rating),2) as avg_rating
       from genres
       inner join movie_genres mg on genres.id = mg.genre_id
       inner join movie_ratings mr on mg.movie_id = mr.movie_id

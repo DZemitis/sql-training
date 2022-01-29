@@ -12,14 +12,13 @@ describe("Simple Queries", () => {
   it(
     "should select total budget and revenue from movies, by using adjusted financial data",
     async done => {
-      const query = `
-      SELECT ROUND (SUM(budget_adjusted),2) as total_budget,
+      const query = `SELECT ROUND (SUM(budget_adjusted),2) as total_budget,
       ROUND (SUM(revenue_adjusted),2) as total_revenue
       FROM ${MOVIES}
       `;
       const result = await db.selectSingleRow(query);
 
-      
+
 
       expect(result).toEqual({
         total_budget: 53668223285.94,
@@ -34,8 +33,7 @@ describe("Simple Queries", () => {
   it(
     "should select count from movies where budget was more than 100000000 and release date after 2009",
     async done => {
-      const query = `
-      SELECT COUNT (*) AS count
+      const query = `SELECT COUNT (*) AS count
       FROM ${MOVIES}
       WHERE budget > 100000000 AND release_date > '2009-01-01'
       `;
@@ -51,8 +49,7 @@ describe("Simple Queries", () => {
   it(
     "should select top three movies order by budget where release data is after 2009",
     async done => {
-      const query = `
-      SELECT original_title, budget, revenue
+      const query = `SELECT original_title, budget, revenue
       FROM ${MOVIES}
       WHERE release_date > '2009-01-01'
       ORDER BY budget DESC
@@ -86,8 +83,7 @@ describe("Simple Queries", () => {
   it(
     "should select count of movies where homepage is secure (starts with https)",
     async done => {
-      const query = ` 
-      SELECT release_date as year,
+      const query = `SELECT release_date as year,
       COUNT (*) AS count
       FROM ${MOVIES}
       WHERE homepage Like 'https%'
@@ -104,8 +100,7 @@ describe("Simple Queries", () => {
   it(
     "should select count of movies released every year",
     async done => {
-      const query = `
-      SELECT strftime('%Y', release_date) AS year,
+      const query = `SELECT strftime('%Y', release_date) AS year,
       COUNT (*) AS count
       from ${MOVIES}
       GROUP BY strftime('%Y', release_date)
@@ -125,7 +120,7 @@ describe("Simple Queries", () => {
           count: 487,
           year: "2010"
         }
-        
+
       ]);
       expect(result.length).toBe(8);
       done();

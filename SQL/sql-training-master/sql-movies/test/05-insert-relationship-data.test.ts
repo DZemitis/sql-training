@@ -34,7 +34,7 @@ const insertMovieGenres = (
 ): string => {
   var filtered = genreRows.filter(x => genres.includes(x.genre));
   return `insert into ${MOVIE_GENRES} (movie_id, genre_id) values` +
-  filtered.map(x => `(${movieId}, ${x.id})`).join(",");
+    filtered.map(x => `(${movieId}, ${x.id})`).join(",");
 };
 
 const insertMovieActors = (
@@ -44,7 +44,7 @@ const insertMovieActors = (
 ): string => {
   var filtered = actorRows.filter(x => actors.includes(x.full_name));
   return `insert into ${MOVIE_ACTORS} (movie_id, actor_id) values` +
-  filtered.map(g=> `(${movieId}, ${g.id})`).join(",");
+    filtered.map(g => `(${movieId}, ${g.id})`).join(",");
 };
 
 const insertMovieDirectors = (
@@ -52,9 +52,9 @@ const insertMovieDirectors = (
   directors: string[],
   directorRows: DirectorRow[]
 ): string => {
-  var filtered = directorRows.filter(g=> directors.includes(g.full_name));
+  var filtered = directorRows.filter(g => directors.includes(g.full_name));
   return `insert into ${MOVIE_DIRECTORS} (movie_id, director_id) values` +
-  filtered.map(g=> `(${movieId}, ${g.id})`).join(",");
+    filtered.map(g => `(${movieId}, ${g.id})`).join(",");
 };
 
 const insertMovieKeywords = (
@@ -62,9 +62,9 @@ const insertMovieKeywords = (
   keywords: string[],
   keywordRows: KeywordRow[]
 ): string => {
-  var filtered = keywordRows.filter(g=> keywords.includes(g.keyword));
+  var filtered = keywordRows.filter(g => keywords.includes(g.keyword));
   return `insert into ${MOVIE_KEYWORDS} (movie_id, keyword_id) values` +
-  filtered.map(g=> `(${movieId}, ${g.id})`).join(",");
+    filtered.map(g => `(${movieId}, ${g.id})`).join(",");
 };
 
 const insertMovieProductionCompanies = (
@@ -72,9 +72,9 @@ const insertMovieProductionCompanies = (
   productionCompanies: string[],
   productionCompanyRows: ProductionCompanyRow[]
 ): string => {
-  var filtered = productionCompanyRows.filter(g=> productionCompanies.includes(g.company_name));
+  var filtered = productionCompanyRows.filter(g => productionCompanies.includes(g.company_name));
   return `insert into ${MOVIE_PRODUCTION_COMPANIES} (movie_id, company_id) values` +
-  filtered.map(g=> `(${movieId}, ${g.id})`).join(",")
+    filtered.map(g => `(${movieId}, ${g.id})`).join(",")
 };
 
 describe("Insert Relationship Data", () => {
@@ -102,7 +102,7 @@ describe("Insert Relationship Data", () => {
       }
 
       const count = await db.selectSingleRow(selectCount(MOVIE_GENRES));
-      expect(count.c).toBe(7141); 
+      expect(count.c).toBe(7141);
 
       const movie = await db.selectSingleRow(selectMovie("tt2908446"));
       expect(movie.original_title).toBe("Insurgent");

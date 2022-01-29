@@ -23,7 +23,8 @@ describe("Foreign Keys", () => {
     "should not be able delete genres if any movie is linked", //
     async done => {
       const genreId = 5;
-      const query = `DELETE FROM ${GENRES}
+      const query = 
+      `DELETE FROM ${GENRES}
       WHERE id = ${genreId}
       `;
       try {
@@ -42,7 +43,8 @@ describe("Foreign Keys", () => {
     "should not be able delete director if any movie is linked",
     async done => {
       const directorId = 7;
-      const query = `DELETE FROM ${DIRECTORS}
+      const query = 
+      `DELETE FROM ${DIRECTORS}
       WHERE id = ${directorId}`;
       try {
         await db.delete(query);
@@ -60,7 +62,8 @@ describe("Foreign Keys", () => {
     "should not be able delete actor if any movie is linked",
     async done => {
       const actorId = 10;
-      const query = `DELETE FROM ${ACTORS}
+      const query = 
+      `DELETE FROM ${ACTORS}
       WHERE id = ${actorId}`;
       try {
         await db.delete(query);
@@ -78,7 +81,8 @@ describe("Foreign Keys", () => {
     "should not be able delete keyword if any movie is linked",
     async done => {
       const keywordId = 12;
-      const query = `DELETE FROM ${KEYWORDS}
+      const query = 
+      `DELETE FROM ${KEYWORDS}
       WHERE id = ${keywordId}`;
       try {
         await db.delete(query);
@@ -96,7 +100,8 @@ describe("Foreign Keys", () => {
     "should not be able delete production company if any movie is linked",
     async done => {
       const companyId = 12;
-      const query = `DELETE FROM ${PRODUCTION_COMPANIES}
+      const query = 
+      `DELETE FROM ${PRODUCTION_COMPANIES}
       WHERE id = ${companyId}`;
       try {
         await db.delete(query);
@@ -116,7 +121,8 @@ describe("Foreign Keys", () => {
     "should not be able delete movie if there are any linked data present",
     async done => {
       const movieId = 100;
-      const query = `DELETE FROM ${MOVIES}
+      const query = 
+      `DELETE FROM ${MOVIES}
       WHERE id = ${movieId}`;
       try {
         await db.delete(query);

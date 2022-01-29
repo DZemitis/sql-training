@@ -13,35 +13,35 @@ import { minutes, Log } from "./utils";
 
 const CREATE_MOVIE_GENRES_TABLE = `
 CREATE TABLE ${MOVIE_GENRES} (
-  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT ON UPDATE CASCADE,
   genre_id integer NOT NULL REFERENCES genres(id) ON DELETE RESTRICT,
   Primary key (movie_id, genre_id)
 )`;
 
 const CREATE_MOVIE_ACTORS_TABLE = `
 CREATE TABLE ${MOVIE_ACTORS} (
-  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT ON UPDATE CASCADE,
   actor_id integer NOT NULL REFERENCES actors(id) ON DELETE RESTRICT,
   Primary key (movie_id, actor_id)
   )`;
 
 const CREATE_MOVIE_DIRECTORS_TABLE = `
 CREATE TABLE ${MOVIE_DIRECTORS} (
-  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT ON UPDATE CASCADE,
   director_id integer NOT NULL REFERENCES directors(id) ON DELETE RESTRICT,
   Primary key (movie_id, director_id)
   )`;
 
 const CREATE_MOVIE_KEYWORDS_TABLE = `
 CREATE TABLE ${MOVIE_KEYWORDS} (
-  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT ON UPDATE CASCADE,
   keyword_id integer NOT NULL REFERENCES keywords(id) ON DELETE RESTRICT,
   Primary key (movie_id, keyword_id)
   )`;
 
 const CREATE_MOVIE_PRODUCTION_COMPANIES_TABLE = `
 CREATE TABLE ${MOVIE_PRODUCTION_COMPANIES} (
-  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT,
+  movie_id integer NOT NULL REFERENCES movies(id) ON DELETE RESTRICT ON UPDATE CASCADE,
   company_id integer NOT NULL REFERENCES production_companies(id) ON DELETE RESTRICT,
   Primary key (movie_id, company_id)
   )`;
